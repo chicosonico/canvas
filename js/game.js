@@ -8,9 +8,26 @@ var impSaxPlayer;
 var player = function(x,y){
     this.x = x;
     this.y = y;
+    this.speed = 10;
 
     this.draw = function(){
       ctx.drawImage(impSaxPlayer, this.x, this.y);
+    }
+
+    this.up = function(){
+        this.y -= this.speed;
+    }
+
+    this.down = function(){
+        this.y += this.speed;
+    }
+
+    this.left = function(){
+        this.x -= this.speed;
+    }
+
+    this.right = function(){
+        this.x += this.speed;
     }
 }
 
@@ -50,6 +67,33 @@ var square3 = new Square(10,300);
 
 //create main player
 var player = new player(200,200);
+
+// create event listener for the main player
+document.addEventListener('keydown', function(key){
+  //console.log(key.keyCode); //this is for get the codes for the keys
+    
+  //UP
+  if (key.keyCode == 38){
+    player.up();
+  }
+
+  //DOWN
+  if (key.keyCode == 40){
+      player.down();
+  }
+
+  //LEFT
+  if (key.keyCode == 37){
+     player.left();
+  }
+
+  //RIGHT
+  if (key.keyCode == 39){
+      player.right();
+  }
+})
+
+
 
 
 function inicializer(){
