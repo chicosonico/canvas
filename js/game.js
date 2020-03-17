@@ -8,10 +8,16 @@ var impSaxPlayer;
 var player = function(x,y){
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speed = 3;
 
     this.draw = function(){
       ctx.drawImage(impSaxPlayer, this.x, this.y);
+    }
+
+    this.text = function(){
+        ctx.font = '20px impact';
+        ctx.fillStyle = '#555555';
+        ctx.fillText('X: '+ this.x + ' Y: '+ this.y, 5, 20); 
     }
 
     this.up = function(){
@@ -127,5 +133,6 @@ function main(){
     square3.move(7);
   
     player.draw();
+    player.text();
 }
 
